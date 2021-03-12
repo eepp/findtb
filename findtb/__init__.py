@@ -21,7 +21,7 @@
 
 import os
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 __description__ = 'Tarball finder'
 
 if os.environ.get('FINDTB_IN_SETUP_PY') != 'YES':
