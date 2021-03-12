@@ -21,8 +21,8 @@
 
 import re
 import requests
-import packaging.version
 import urllib.parse
+import semver
 import ftplib
 import logging
 import os.path
@@ -194,8 +194,13 @@ class Tarball:
         url_parts = urllib.parse.urlparse(url)
         self._name = os.path.basename(url_parts.path)
         m = re.match(_build_tarball_name_regex(project_name), self._name, re.I)
-        assert(m is not None)
-        self._version = packaging.version.parse(m.group(1))
+        assert m is not None
+
+        try:
+            self._version = semver.VersionInfo.parse(m.group(1))
+        except ValueError:
+            self._version = m.group(1)
+
         self._name_ext = m.group(2)
 
     @property

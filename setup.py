@@ -36,7 +36,7 @@ setup(name='findtb',
       author_email='eeppeliteloop@gmail.com',
       url='https://github.com/eepp/findtb',
       packages=['findtb'],
-      install_requires=['packaging', 'requests>=2'],
+      install_requires=['semver>=2.13', 'requests>=2'],
       python_requires='>=3.4',
       classifiers=[
           'Development Status :: 4 - Beta',
